@@ -50,7 +50,7 @@ The Sprig-C3 board features the MAX17048 battery capacity measurement IC connect
 | SCL      | 3      |
 
 #### Setup process
-Inside the [Home Assistant Setup](https://github.com/Frapais/Sprig-C3/tree/main/Home%20Assistant%20Setup) folder, you will find a YAML file and a HEADER file.
+Inside the [Home Assistant Setup](Home%20Assistant%20Setup) folder, you will find a YAML file and a HEADER file.
 * First, you must copy the header file to your Home Assistant under "/config/esphome/custom_components/MAX17048_component.h".
 * Next, you have to create a new ESP32-C3 device from the ESPHome plugin, as described above. (If you haven't already).
 * Inside the corresponding YAML file, you must paste the contents of this repo's [YAML]() file, replacing the "***" with your corresponding values.
@@ -58,19 +58,18 @@ Inside the [Home Assistant Setup](https://github.com/Frapais/Sprig-C3/tree/main/
 Your YAML file needs to import the "MAX17048_component.h" file in the "includes" section, as well as the "Wire" library in the "libraries section.
 Next, you can add an i2c sensor using the "custom" platform and include the corresponding "lambda" section to get the values from the MAX17048 Battery Measurement IC.
 
-**Voila!** You can now monitor your battery status from Home Assistant with accuracy! I used Graphana to plot the Li-Ion battery's capacity over time in the following image:
-<img src="https://github.com/Frapais/Sprig-C3/blob/main/Home%20Assistant%20Setup/428603090_7684237298253773_1654994168547208043_n.jpg" alt="Battery Capacity Plot" allign="left"/>
+**Voila!** You can now monitor your battery status from Home Assistant with accuracy!
 
 
 ## Availability
-You can get the assembled boards in my [Tindie](https://www.tindie.com/products/frapais/esp32-devkit-nanocell-c3/), [Etsy](https://www.etsy.com/listing/1679895323/nanocell-c3-v2-beta?ref=listings_manager_grid), and [Elecrow](https://www.elecrow.com/nanocell-c3.html) stores.
+You can get the assembled boards in my [Tindie](https://www.tindie.com/products/34523/), [Elecrow](https://www.elecrow.com/nanocell-c3.html), or my [official website](https://sprig-labs.com/) stores.
 
-<a href="https://www.tindie.com/stores/frapais/?ref=offsite_badges&utm_source=sellers_Frapais&utm_medium=badges&utm_campaign=badge_large"><img src="https://d2ss6ovg47m0r5.cloudfront.net/badges/tindie-larges.png" alt="I sell on Tindie" width="200" height="104" allign="left"></a>
+<a href="https://www.tindie.com/stores/spriglabs/?ref=offsite_badges&utm_source=sellers_Frapais&utm_medium=badges&utm_campaign=badge_large"><img src="https://d2ss6ovg47m0r5.cloudfront.net/badges/tindie-larges.png" alt="I sell on Tindie" width="200" height="104"></a>
 
 ## Certifications
 This project is certified by the [Open Source Hardware Association (OSHWA)](https://certification.oshwa.org/gr000008.html)
 
-<img src="https://github.com/Frapais/Sprig-C3/blob/main/PCB/Certifications/certification-mark-GR000008-stacked.png" alt="Open Source Hardware Association Certification" width="300" allign="left"/>
+<img src="PCB/Certifications/certification-mark-GR000008-stacked.png" alt="Open Source Hardware Association Certification" width="300" allign="left"/>
 
 
 
