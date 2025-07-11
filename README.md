@@ -1,9 +1,8 @@
-# NanoCell-C3
-
-This is the repository of my **NanoCell-C3** project, which includes an ESP32 development board I made to simplify the creation of small battery-powered devices for use with Home Assistant and ESPHome.
-| <img src="https://github.com/Frapais/NanoCell-C3/blob/main/PCB/2024-02-17T16_10_27.754Z-2024-02-04%20004.jpg" alt="Photo 1" width="600"/> | <img src="https://github.com/Frapais/NanoCell-C3/blob/main/PCB/2024-02-17T16_10_27.754Z-2024-02-17%20009.jpg" alt="Photo 2" width="600"/> |
+# Sprig-C3 ESP32 Development Board 
+This is the repository of my **Sprig-C3** project, which includes an ESP32 development board I made to simplify the creation of small battery-powered devices for use with Home Assistant and ESPHome.
+| <img src="PCB/2024-02-17T16_10_27.754Z-2024-02-04%20004.jpg" alt="Photo 1" width="600"/> | <img src="PCB/2024-02-17T16_10_27.754Z-2024-02-17%20009.jpg" alt="Photo 2" width="600"/> |
 |-------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------|
-| <img src="https://github.com/Frapais/NanoCell-C3/blob/main/PCB/Screenshot%20from%202024-04-12%2010-49-21.png" alt="Pinout" width="600"/> | <img src="https://github.com/Frapais/NanoCell-C3/blob/main/PCB/Screenshot%20from%202024-04-12%2010-06-56.png" alt="Dimensions" width="600"/> |
+| <img src="PCB/Screenshot%20from%202024-04-12%2010-49-21.png" alt="Pinout" width="600"/> | <img src="PCB/Screenshot%20from%202024-04-12%2010-06-56.png" alt="Dimensions" width="600"/> |
 
 
 ## Description
@@ -19,7 +18,7 @@ This is the repository of my **NanoCell-C3** project, which includes an ESP32 de
 ### Tests
 | Idle Power Consumption: 66.1μA                                                                                                                          | Max Charging Current: 464mA                                                                                         | VCC Output @ 4.2V input: 3.356V                                                                                       | VCC Output @ 3V input: 3.359V                                                                                       |
 |-------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------|
-| <img src="https://github.com/Frapais/NanoCell-C3/blob/main/Tests/Idle%20consumption%20at%204.2V.jpg" alt="Idle Power Consumption" width="300"/> | <img src="https://github.com/Frapais/NanoCell-C3/blob/main/Tests/Max%20charging%20current.jpg" width="300"/> | <img src="https://github.com/Frapais/NanoCell-C3/blob/main/Tests/VCC%20voltage%20at%204.2V.jpg" width="300"/> | <img src="https://github.com/Frapais/NanoCell-C3/blob/main/Tests/VCC%20voltage%20at%203V.jpg" width="300"/> |
+| <img src="Tests/Idle%20consumption%20at%204.2V.jpg" alt="Idle Power Consumption" width="300"/> | <img src="Tests/Max%20charging%20current.jpg" width="300"/> | <img src="Tests/VCC%20voltage%20at%204.2V.jpg" width="300"/> | <img src="Tests/VCC%20voltage%20at%203V.jpg" width="300"/> |
 
 The Idle Power Consumption image shows the consumption of all the components of the board except the ESP32 module, as its consumption fluctuates depending on the tasks it's running. Therefore, if you want to calculate the battery life of your project, you should expect at least 66μA of current, in addition to the current consumption of the ESP32 module.
 
@@ -29,29 +28,29 @@ The Idle Power Consumption image shows the consumption of all the components of 
 * Installed ESPHome plugin
 
 #### Setup process:
-1. Connect the NanoCell-C3 board on the computer running Home Assistant, while pressing the BOOT button
+1. Connect the Sprig-C3 board on the computer running Home Assistant, while pressing the BOOT button
 2. Open ESPHome, and add a new device as shown [here](https://esphome.io/guides/getting_started_hassio#dashboard-interface)
 3. Select "Connect" to upload the initialization firmware on the board, and select the correct port from the popup window. (It usually shows up as a "USB JTAG" device).
-4. Wait for the upload to finish, and restart the NanoCell-C3. Now, every time you power on the device, it should connect to your WiFi automatically.
+4. Wait for the upload to finish, and restart the Sprig-C3. Now, every time you power on the device, it should connect to your WiFi automatically.
 5. Last step, is to go to your Home Assistant settings, and Configure your newly discovered device (assuming it is powered on and visible on the network).
 
 #### Video Tutorial:
-https://youtu.be/UaIIV4CaRA4
-
+[https://youtu.be/UaIIV4CaRA4
+](https://youtu.be/UaIIV4CaRA4)
 
 
 
 ### Battery Capacity Measurement
-The NanoCell-C3 board features the MAX17048 battery capacity measurement IC connected to the respective I2C pins. As there is not complete support for this IC in the [ESPHome](https://esphome.io/index.html), you need to add it as a custom [ESPHome Component](https://esphome.io/components/sensor/custom)
+The Sprig-C3 board features the MAX17048 battery capacity measurement IC connected to the respective I2C pins. As there is not complete support for this IC in the [ESPHome](https://esphome.io/index.html), you need to add it as a custom [ESPHome Component](https://esphome.io/components/sensor/custom)
 
-#### I2C Pins of the NanoCell-C3 board
+#### I2C Pins of the Sprig-C3 board
 | Function | Pin No |
 |----------|--------|
 | SDA      | 2      |
 | SCL      | 3      |
 
 #### Setup process
-Inside the [Home Assistant Setup](https://github.com/Frapais/NanoCell-C3/tree/main/Home%20Assistant%20Setup) folder, you will find a YAML file and a HEADER file.
+Inside the [Home Assistant Setup](https://github.com/Frapais/Sprig-C3/tree/main/Home%20Assistant%20Setup) folder, you will find a YAML file and a HEADER file.
 * First, you must copy the header file to your Home Assistant under "/config/esphome/custom_components/MAX17048_component.h".
 * Next, you have to create a new ESP32-C3 device from the ESPHome plugin, as described above. (If you haven't already).
 * Inside the corresponding YAML file, you must paste the contents of this repo's [YAML]() file, replacing the "***" with your corresponding values.
@@ -60,7 +59,7 @@ Your YAML file needs to import the "MAX17048_component.h" file in the "includes"
 Next, you can add an i2c sensor using the "custom" platform and include the corresponding "lambda" section to get the values from the MAX17048 Battery Measurement IC.
 
 **Voila!** You can now monitor your battery status from Home Assistant with accuracy! I used Graphana to plot the Li-Ion battery's capacity over time in the following image:
-<img src="https://github.com/Frapais/NanoCell-C3/blob/main/Home%20Assistant%20Setup/428603090_7684237298253773_1654994168547208043_n.jpg" alt="Battery Capacity Plot" allign="left"/>
+<img src="https://github.com/Frapais/Sprig-C3/blob/main/Home%20Assistant%20Setup/428603090_7684237298253773_1654994168547208043_n.jpg" alt="Battery Capacity Plot" allign="left"/>
 
 
 ## Availability
@@ -71,7 +70,7 @@ You can get the assembled boards in my [Tindie](https://www.tindie.com/products/
 ## Certifications
 This project is certified by the [Open Source Hardware Association (OSHWA)](https://certification.oshwa.org/gr000008.html)
 
-<img src="https://github.com/Frapais/NanoCell-C3/blob/main/PCB/Certifications/certification-mark-GR000008-stacked.png" alt="Open Source Hardware Association Certification" width="300" allign="left"/>
+<img src="https://github.com/Frapais/Sprig-C3/blob/main/PCB/Certifications/certification-mark-GR000008-stacked.png" alt="Open Source Hardware Association Certification" width="300" allign="left"/>
 
 
 
